@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Practicing JS</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" media="all" href="style.css">
+
+  </head>
+  <body>
+    <h3>This is a testing page for js</h3>
+
+    </body>
+    <script>
+
+        function computerPlay() {
+         let computer = ["rock", "paper", "scissors"];
+         let round = Math.floor(Math.random()*3);
+         return computer[round];
+       }
+
+       function playRound(userSelection,computerSelection) {
+         if(userSelection === computerSelection) {
+           return "It is a tie!!!";
+         } else if (userSelection === "rock" && computerSelection === "scissors") {
+           return "Rock beats scissors. You win!";
+         } else if (userSelection === "paper" && computerSelection === "rock") {
+           return "Paper beats rock. You win.";
+         } else if (userSelection === "scissors" && computerSelection === "paper") {
+           return "Scissors beats paper. You win";
+         } else {
+           return `You lose. ${computerSelection} beats ${userSelection}`;
+         }
+       }
+
+       function game() {
+         let playerWinCount = 0;
+         for (let i = 0 ; i < 5; i++) {
+           let computerSelection = computerPlay();
+           let userSelection = prompt("Choose between rock, paper, or scissors");
+           let result = playRound(computerSelection,userSelection);
+            console.log(result);
+            if(result.indexOf("win") !== -1)
+                playerWinCount++
+         }
+         if(playerWinCount >= 3)
+            document.write("You win.");
+        else
+            document.write("You lose.");
+       }
+       game();
+
+    </script>
+</html>
